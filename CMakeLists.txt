@@ -14,8 +14,6 @@ add_executable(image_mesh main.cpp
                      image.h
                      filter.h
                      disjoint-set.h
-                     convolve.h
-                     process-edges.h
-                     display-universe.h)
+                     convolve.h)
 
 target_link_libraries(image_mesh ${OpenCV_LIBS})

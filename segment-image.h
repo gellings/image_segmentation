@@ -24,7 +24,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #include "misc.h"
 #include "filter.h"
 #include "segment-graph.h"
-//#include "process-edges.h"
 
 //// random color
 rgb random_rgb(){
@@ -131,15 +130,6 @@ image<rgb> *segment_image(image<rgb> *im, float sigma, float c, int min_size,
       u->join(a, b);
   }
 
-//  // add edges to edge processer
-//  for (int i = 0; i < num; i++) {
-//    int a = u->find(edges[i].a);
-//    int b = u->find(edges[i].b);
-//    if(a != b)
-//        pe.addEdge(edges[i],a,b);
-//  }
-
-//  pe.orderEdges();
   delete [] edges;
   *num_ccs = u->num_sets();
 
@@ -156,35 +146,6 @@ image<rgb> *segment_image(image<rgb> *im, float sigma, float c, int min_size,
       imRef(output, x, y) = colors[comp];
     }
   }
-
-//  rgb *red = new rgb();
-//  red->r = (uchar)255;
-//  red->g = (uchar)255;
-//  red->b = (uchar)255;
-//  rgb *bl = new rgb();
-//  bl->r = 0;
-//  bl->g = 0;
-//  bl->b = 0;
-//  int co = 0;
-//  //std::map<long, std::vector<edge> >::iterator it = pe.e_map.begin();
-//  for (std::map<long, std::vector<edge> >::iterator it = pe.e_map.begin(); it != pe.e_map.end(); it++)
-//  {co++;
-//        if(0)
-//            for(int i=0;i<it->second.size();i++)
-//            {
-//                int x = it->second.at(0).a % width;
-//                int y = it->second.at(0).a / width;
-//                imRef(output, x, y) = *bl;
-//                x = it->second.at(0).b % width;
-//                y = it->second.at(0).b / width;
-//                imRef(output, x, y) = *bl;
-//                x = it->second.at(i).b % width;
-//                y = it->second.at(i).b / width;
-//                imRef(output, x, y) = *bl;
-//                //std::cout << i << std::endl;
-//            }
-//  }
-//  delete red;
 
   delete [] colors;  
   delete u;
